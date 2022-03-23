@@ -1,6 +1,8 @@
 // Declarativa: Es más cómoda... más guiada... menos flexible
 pipeline {
     
+    agent any;
+    
     stages {
         stage('Compilación') {
             steps {
