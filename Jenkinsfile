@@ -96,7 +96,7 @@ pipeline {
                     }
                     when {
                         expression {
-                            return params.PROBAR_HA == 'true';
+                            return params.PROBAR_HA;
                         }
                     }
                 }    
