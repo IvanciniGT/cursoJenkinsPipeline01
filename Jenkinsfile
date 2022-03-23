@@ -101,6 +101,7 @@ pipeline {
                     }
                 }    
                 stage('6.3-UI Completas') {
+                    /*
                     stages{
                         // Selenium-Grid
                         stage('6.3.1-Chrome') {
@@ -152,6 +153,26 @@ pipeline {
                                 echo 'Fedora'
                             }                        
                         }    
+                    }
+                    */
+                    matrix {
+                        axes {
+                            axis {
+                                name 'NAVEGADOR'
+                                values 'firefox','opera','chrome','edge'
+                            }
+                            axis {
+                                name 'SERVIDOR_APLICACIONES'
+                                values 'jboss','weblogic','websphere','tomcat'
+                            }
+                        }
+                        stages{
+                            stage('Pruebas en navegador') {
+                                steps {
+                                    echo "Probar la app en el navegador ${NAVEGADOR} corriendo en ${SERVIDOR_APLICACIONES}"
+                                }
+                            }
+                        }
                     }
                 }    
             }
