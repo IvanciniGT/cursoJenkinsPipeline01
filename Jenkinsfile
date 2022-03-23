@@ -172,7 +172,6 @@ pipeline {
                                     name 'NAVEGADOR'
                                     values 'safari'
                                 }
-
                                 axis {
                                     name 'SO'
                                     values 'windows10','windows11','ubuntu'
@@ -183,7 +182,6 @@ pipeline {
                                     name 'NAVEGADOR'
                                     values 'edge'
                                 }
-
                                 axis {
                                     name 'SO'
                                     values 'macOS','ubuntu'
@@ -205,6 +203,14 @@ pipeline {
         stage('7-Guardo el artefacto') {
             steps {
                 echo 'En un repo de artefactos: NEXUS, ARTIFACTORY, REGISTRY DE IMAGENES DE DOCKER'
+                sh 'echo HOLA !!!!'
+                
+                archiveArtifacts allowEmptyArchive: true, artifacts: 'target/*.war', followSymlinks: false
+                sh '''
+                    pwd
+                    clear
+                    whoami
+                '''
             }
         }
     }
