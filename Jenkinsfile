@@ -158,7 +158,7 @@ pipeline {
         }
         // Aqui estamos en el limite de lo que es Entrega continua
         stage('7-Guardo el artefacto') {
-            step {
+            steps {
                 echo 'En un repo de artefactos: NEXUS, ARTIFACTORY, REGISTRY DE IMAGENES DE DOCKER'
             }
         }
