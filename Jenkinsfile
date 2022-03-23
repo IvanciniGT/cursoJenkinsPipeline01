@@ -159,17 +159,41 @@ pipeline {
                         axes {
                             axis {
                                 name 'NAVEGADOR'
-                                values 'firefox','opera','chrome','edge'
+                                values 'firefox','opera','chrome','edge','safari'
                             }
                             axis {
-                                name 'SERVIDOR_APLICACIONES'
-                                values 'jboss','weblogic','websphere','tomcat'
+                                name 'SO'
+                                values 'windows10','windows11','macOS','ubuntu'
+                            }
+                        }
+                        excludes{
+                            exclude {
+                                axis {
+                                    name 'NAVEGADOR'
+                                    values 'safari'
+                                }
+
+                                axis {
+                                    name 'SO'
+                                    values 'windows10','windows11','ubuntu'
+                                }                            
+                            }
+                            exclude {
+                                axis {
+                                    name 'NAVEGADOR'
+                                    values 'edge'
+                                }
+
+                                axis {
+                                    name 'SO'
+                                    values 'macOS','ubuntu'
+                                }                            
                             }
                         }
                         stages{
                             stage('Pruebas en navegador') {
                                 steps {
-                                    echo "Probar la app en el navegador ${NAVEGADOR} corriendo en ${SERVIDOR_APLICACIONES}"
+                                    echo "Probar la app en el navegador ${NAVEGADOR} corriendo en ${SO}"
                                 }
                             }
                         }
