@@ -1,6 +1,10 @@
 // Declarativa: Es más cómoda... más guiada... menos flexible
 pipeline {
     // Integración continua
+    tools {
+      dockerTool 'midocker'
+    }
+
     agent {
         docker {
             image 'ubuntu'
