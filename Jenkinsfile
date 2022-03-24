@@ -1,7 +1,12 @@
 // Declarativa: Es más cómoda... más guiada... menos flexible
 pipeline {
     // Integración continua
-    agent any;
+    agent {
+        docker {
+            image 'ubuntu'
+        }
+        //dockerfile
+    }
     // Parametros
     parameters {
         booleanParam description: 'Quiere hacer pruebas de HA?', name: 'PROBAR_HA'
