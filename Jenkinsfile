@@ -1,16 +1,9 @@
 // Declarativa: Es más cómoda... más guiada... menos flexible
 pipeline {
     // Integración continua
-    tools {
-      dockerTool 'midocker'
-    }
+  
 
-    agent {
-        docker {
-            image 'ubuntu'
-        }
-        //dockerfile
-    }
+    agent any
     // Parametros
     parameters {
         booleanParam description: 'Quiere hacer pruebas de HA?', name: 'PROBAR_HA'
@@ -18,6 +11,17 @@ pipeline {
     }
 
     stages {
+        stage('0-Inicialización') {
+            script {
+                // Vete a otro trajabo Jenkins: Libreria 17
+                // Recorre todos los builds que haya habido
+                // En el ultimo que se haya ejecutado correctamente 
+                // Scate de el un artefactor
+                // Lo copias en el proyecto en esta ruta
+                // Lo ejecutas
+                // Accedo directamente al API de Jenkins
+            }
+        }
         stage('1-Compilación') {
             steps {
                 echo 'Voy a compilar:'
@@ -41,6 +45,12 @@ pipeline {
             stages {
                 stage('2.1-Pruebas Unitarias') {
                     steps {
+//                        script{
+                            //vars
+                            //if
+                            //Try catch
+                            //Bucles
+//                        }
                         echo 'Pruebas unitarias'
                     }
                     //post
